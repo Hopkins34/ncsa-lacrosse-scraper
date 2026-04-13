@@ -148,7 +148,7 @@ async function scrapeSchool(school, index, total) {
       };
     }
 
-    await new Promise(resolve => setTimeout(resolve, 300));
+    await new Promise(resolve => setTimeout(resolve, 100));
   }
 
   console.log(`  ❌ No coaches found`);
@@ -172,6 +172,14 @@ async function main() {
     // All D1 schools
     schools = data.filter(s => s.athletics.division === 1);
     console.log(`Scraping ${schools.length} D1 schools...\n`);
+  } else if (mode === 'd2') {
+    // All D2 schools
+    schools = data.filter(s => s.athletics.division === 2);
+    console.log(`Scraping ${schools.length} D2 schools...\n`);
+  } else if (mode === 'd3') {
+    // All D3 schools
+    schools = data.filter(s => s.athletics.division === 3);
+    console.log(`Scraping ${schools.length} D3 schools...\n`);
   } else if (mode === 'all') {
     schools = data;
     console.log(`Scraping all ${schools.length} schools...\n`);
@@ -182,7 +190,7 @@ async function main() {
   for (let i = 0; i < schools.length; i++) {
     const result = await scrapeSchool(schools[i], i, schools.length);
     results.push(result);
-    await new Promise(resolve => setTimeout(resolve, 1000));
+    await new Promise(resolve => setTimeout(resolve, 500)); // Faster delay
   }
 
   // Save results

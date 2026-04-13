@@ -139,6 +139,7 @@ async function scrape() {
       results.push({
         school: team.school,
         official_website: officialWebsite,
+        ncsa_url: team.url,
         location: {
           city: team.city,
           state: team.state
@@ -147,7 +148,8 @@ async function scrape() {
           association: team.association,
           division: team.division,
           conference: team.conference,
-          head_coach: headCoach
+          head_coach: headCoach,
+          coach_email: coachEmail || null
         },
         academics: {
           tuition: tuition,
@@ -174,12 +176,14 @@ async function scrape() {
   const flatData = results.map(team => ({
     school: team.school || "",
     official_website: team.official_website || "",
+    ncsa_url: team.ncsa_url || "",
     city: team.location?.city || "",
     state: team.location?.state || "",
     association: team.athletics?.association || "",
     division: team.athletics?.division ?? "",
     conference: team.athletics?.conference || "",
     head_coach: team.athletics?.head_coach || "",
+    coach_email_ncsa: team.athletics?.coach_email || "",
     tuition: team.academics?.tuition ?? "",
     size_category: team.academics?.size_category || "",
     enrollment: team.academics?.enrollment ?? "",
