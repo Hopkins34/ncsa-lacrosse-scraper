@@ -1,3 +1,5 @@
 node_modules/
 .DS_Store
 colleges_list.json
+coach_data_*.json
+athletic_site_test.json

@@ -93,9 +93,37 @@ mv mens_lacrosse.json mens_lacrosse_backup.json
 node scrape.js
 ```
 
+## Athletic Site Scraping (Current Coach Info)
+
+Get verified, current coach info directly from official athletic websites:
+
+```bash
+# Test with top schools (Duke, Syracuse, etc.)
+node scrape-coaches.js test
+
+# Merge new coach data into dataset
+node merge-coach-data.js
+
+# Result: mens_lacrosse_updated.json with emails!
+```
+
+**Success rate**: 90% find coach names, 50% find email addresses
+
+See `ATHLETIC-SITE-SCRAPING.md` for full guide.
+
+## Adding Your Target Schools
+
+```bash
+# Interactive tool to add athletic domains
+node add-school-domain.js
+
+# Then scrape those schools
+node scrape-coaches.js test
+```
+
 ## What's Next?
 
-1. **Add coach emails** - scrape from official athletic websites
+1. ✅ ~~Add coach emails~~ - DONE! See `scrape-coaches.js`
 2. **Add recruiting coordinator info** - often different from head coach
 3. **Add program stats** - roster size, graduation rate, etc.
 4. **Add automation** - schedule regular scrapes to catch updates
